@@ -225,7 +225,7 @@ export default function LaunchPage() {
     
 
         {/* Pricing intent */}
-        <Card id="signup">
+        <Card id="pricing">
           <CardHeader>
             <CardTitle>서비스 요금제(월 구독)</CardTitle>
             <CardDescription>사전 알림 신청고객에 한하여, 출시 시점에 얼리버드 혜택(50% 할인)을 제공합니다.</CardDescription>
@@ -294,7 +294,7 @@ export default function LaunchPage() {
         </Card>
 
         {/* Signup form */}
-        <Card>
+        <Card id="signup">
           <CardHeader>
             <CardTitle className="flex items-center"><Mail className="w-4 h-4 mr-2"/>런칭 알림 신청(12월말 출시 예정)</CardTitle>
           </CardHeader>
