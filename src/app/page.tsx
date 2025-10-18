@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -16,6 +16,13 @@ export default function LaunchPage() {
   const smartAltImg = "/card3.png" // 스마트 대체 추천 (미정: 추후 교체)
   const manageImg = "/card4.png" // 멀티클라우드 실행/관리 (플레이스홀더)
 
+  const solutions: Array<{ title: string; src: string }> = [
+    { title: '멀티클라우드 비교', src: multicloudImg },
+    { title: '클릭 투 런치', src: clickToLaunchImg },
+    { title: '대체 GPU 자동 추천 및 알림 기능', src: smartAltImg },
+    { title: 'Multi Cloud의 GPU를 한 곳에서 실행하고 관리', src: manageImg },
+  ]
+
   const [email, setEmail] = useState("")
   const [company, setCompany] = useState("")
   const [plan, setPlan] = useState("Premium")
@@ -26,6 +33,46 @@ export default function LaunchPage() {
   const [error, setError] = useState<string | null>(null)
   const [solutionPreview, setSolutionPreview] = useState<{ title: string; src: string }>({ title: '멀티클라우드 비교', src: multicloudImg })
   const [discountOption, setDiscountOption] = useState<'notify-20' | 'prepay-50'>('notify-20')
+
+  const thumbnailsRef = useRef<HTMLDivElement | null>(null)
+  const scrollDebounceRef = useRef<number | null>(null)
+
+  const selectedIndex = solutions.findIndex(s => s.src === solutionPreview.src)
+
+  useEffect(() => {
+    const container = thumbnailsRef.current
+    if (!container) return
+    const child = container.children[selectedIndex] as HTMLElement | undefined
+    if (!child) return
+    const targetLeft = child.offsetLeft - (container.clientWidth / 2 - child.clientWidth / 2)
+    container.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' })
+  }, [selectedIndex])
+
+  const handleThumbScroll = () => {
+    const container = thumbnailsRef.current
+    if (!container) return
+    if (scrollDebounceRef.current) window.clearTimeout(scrollDebounceRef.current)
+    scrollDebounceRef.current = window.setTimeout(() => {
+      const containerRect = container.getBoundingClientRect()
+      const containerCenter = containerRect.left + container.clientWidth / 2
+      let nearestIdx = 0
+      let nearestDist = Number.POSITIVE_INFINITY
+      for (let i = 0; i < container.children.length; i++) {
+        const el = container.children[i] as HTMLElement
+        const rect = el.getBoundingClientRect()
+        const center = rect.left + rect.width / 2
+        const dist = Math.abs(center - containerCenter)
+        if (dist < nearestDist) {
+          nearestDist = dist
+          nearestIdx = i
+        }
+      }
+      const next = solutions[nearestIdx]
+      if (next && next.src !== solutionPreview.src) {
+        setSolutionPreview(next)
+      }
+    }, 100)
+  }
 
   const submitWith = async (option: 'notify-20' | 'prepay-50') => {
     if (!agree || !email) {
@@ -215,6 +262,27 @@ export default function LaunchPage() {
                   </div>
                   <div className="p-4">
                     <img src={solutionPreview.src} alt={solutionPreview.title} className="w-full h-auto rounded-md border" onError={(e)=>{(e.currentTarget as HTMLImageElement).src='/window.svg'}}/>
+                  </div>
+                  <div className="px-2 pb-4">
+                    <div
+                      ref={thumbnailsRef}
+                      onScroll={handleThumbScroll}
+                      className="flex gap-3 overflow-x-auto"
+                      aria-label="미리보기 썸네일 목록"
+                    >
+                      {solutions.map((s, idx) => (
+                        <button
+                          key={s.src}
+                          type="button"
+                          onClick={() => setSolutionPreview(s)}
+                          className={`shrink-0 rounded-lg border ${idx === selectedIndex ? 'border-indigo-500 ring-2 ring-indigo-200' : 'border-gray-200'} bg-white p-1`}
+                          aria-pressed={idx === selectedIndex}
+                          aria-label={s.title}
+                        >
+                          <img src={s.src} alt={s.title} className="h-16 w-24 object-cover rounded" />
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
