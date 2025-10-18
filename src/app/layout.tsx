@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GPUFly - Find the right GPU, launch Now",
+  title: "GPUFly - Find the right GPU, Launch right now",
   description: "모든 Cloud GPU 가격·가용성을 한 화면에서 비교하고, 클릭 한 번으로 GPU를 실행하세요.",
 };
 

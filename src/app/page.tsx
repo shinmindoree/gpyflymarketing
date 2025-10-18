@@ -65,7 +65,7 @@ export default function LaunchPage() {
         <section className="text-center space-y-5">
           <Badge className="bg-blue-100 text-blue-800">Launching Soon</Badge>
           <h1 className="font-bold tracking-tight text-4xl md:text-6xl leading-tight">
-            <span className="block">Find the right GPU, launch Now</span>
+            <span className="block">Find the right GPU, Launch right now</span>
         
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground">
@@ -83,7 +83,7 @@ export default function LaunchPage() {
         <section id="pains" className="rounded-2xl bg-gray-50">
           <div className="px-6 py-8 md:px-10 md:py-10">
             <div className="text-center mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold">스타트업의 Cloud GPU 활용시 겪는 어려움</h2>
+              <h2 className="text-2xl md:text-3xl font-bold">고사양 Cloud GPU를 온디맨드로 활용하기 어려운 현실</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
               <Card className="h-full bg-white text-foreground ring-1 ring-black/5">
@@ -148,7 +148,7 @@ export default function LaunchPage() {
         <section id="features" className="rounded-2xl bg-gradient-to-r from-indigo-600 to-blue-500 text-white">
           <div className="px-6 py-10 md:px-10 md:py-12">
             <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold">GPU 브로커리지가 문제를 이렇게 해결합니다</h2>
+              <h2 className="text-2xl md:text-3xl font-bold">GPUFly가 문제를 이렇게 해결합니다</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-stretch">
               <Card role="button" tabIndex={0} onKeyDown={(e)=>{if(e.key==='Enter'||e.key===' '){setSolutionPreview({ title: '멀티클라우드 비교', src: multicloudImg })}}} className="w-full h-full bg-white text-foreground ring-1 ring-black/5 hover:shadow-lg hover:-translate-y-[2px] focus:ring-2 focus:ring-indigo-500 transition cursor-pointer" onClick={() => setSolutionPreview({ title: '멀티클라우드 비교', src: multicloudImg })}>
@@ -157,15 +157,12 @@ export default function LaunchPage() {
                     <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-indigo-50">
                       <Cloud className="w-4 h-4 text-indigo-600"/>
                     </span>
-                    <CardTitle className="text-base">멀티클라우드 비교</CardTitle>
+                    <CardTitle className="text-base">한곳에서 멀티클라우드 비교</CardTitle>
                   </div>
                   <CardDescription>AWS · Azure · GCP 및 기타 GPUaaS 까지 한 곳에서 비교</CardDescription>
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground">
                   여러 CSP에서 제공하는 주요 GPU 모델의 가격·사양·가용성을 즉시 비교합니다.
-                  <div className="mt-3 flex items-center text-indigo-600 font-medium text-xs">
-                    <MousePointerClick className="w-3 h-3 mr-1"/> 클릭 <ChevronRight className="w-3 h-3 ml-1"/>
-                  </div>
                 </CardContent>
               </Card>
               <Card role="button" tabIndex={0} onKeyDown={(e)=>{if(e.key==='Enter'||e.key===' '){setSolutionPreview({ title: '클릭 투 런치', src: clickToLaunchImg })}}} className="w-full h-full bg-white text-foreground ring-1 ring-black/5 hover:shadow-lg hover:-translate-y-[2px] focus:ring-2 focus:ring-indigo-500 transition cursor-pointer" onClick={() => setSolutionPreview({ title: '클릭 투 런치', src: clickToLaunchImg })}>
@@ -174,15 +171,12 @@ export default function LaunchPage() {
                     <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-indigo-50">
                       <Rocket className="w-4 h-4 text-indigo-600"/>
                     </span>
-                    <CardTitle className="text-base">클릭 투 런치</CardTitle>
+                    <CardTitle className="text-base">간편한 클릭 투 런치</CardTitle>
                   </div>
                   <CardDescription>AI개발 환경을 위한 컨테이너 이미지 기반 즉시 런칭</CardDescription>
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground">
                   사용자 지정 도커이미지를 통해 여러 CSP에서 즉시 개발환경을 실행합니다.
-                  <div className="mt-3 flex items-center text-indigo-600 font-medium text-xs">
-                    <MousePointerClick className="w-3 h-3 mr-1"/> 클릭 <ChevronRight className="w-3 h-3 ml-1"/>
-                  </div>
                 </CardContent>
               </Card>
               <Card role="button" tabIndex={0} onKeyDown={(e)=>{if(e.key==='Enter'||e.key===' '){setSolutionPreview({ title: '가용한 대체 GPU 자동 추천 및 추후 가용 시 실시간 알림 기능', src: smartAltImg })}}} className="w-full h-full bg-white text-foreground ring-1 ring-black/5 hover:shadow-lg hover:-translate-y-[2px] focus:ring-2 focus:ring-indigo-500 transition cursor-pointer" onClick={() => setSolutionPreview({ title: '대체 GPU 자동 추천 및 알림 기능', src: smartAltImg })}>
@@ -197,9 +191,6 @@ export default function LaunchPage() {
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground">
                   원하는 GPU의 가용성 부족 시 인접 리전/유사 스펙을 자동 추천하고 가격 변동을 알립니다.
-                  <div className="mt-3 flex items-center text-indigo-600 font-medium text-xs">
-                    <MousePointerClick className="w-3 h-3 mr-1"/> 클릭 <ChevronRight className="w-3 h-3 ml-1"/>
-                  </div>
                 </CardContent>
               </Card>
               <Card role="button" tabIndex={0} onKeyDown={(e)=>{if(e.key==='Enter'||e.key===' '){setSolutionPreview({ title: 'Multi Cloud의 GPU를 한 곳에서 실행하고 관리', src: manageImg })}}} className="w-full h-full bg-white text-foreground ring-1 ring-black/5 hover:shadow-lg hover:-translate-y-[2px] focus:ring-2 focus:ring-indigo-500 transition cursor-pointer" onClick={() => setSolutionPreview({ title: 'Multi Cloud의 GPU를 한 곳에서 실행하고 관리', src: manageImg })}>
@@ -208,15 +199,12 @@ export default function LaunchPage() {
                     <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-indigo-50">
                       <Shield className="w-4 h-4 text-indigo-600"/>
                     </span>
-                    <CardTitle className="text-base">Multi Cloud의 GPU를 한 곳에서 실행하고 관리</CardTitle>
+                    <CardTitle className="text-base">한 곳에서 GPU 통합 관리</CardTitle>
                   </div>
                   <CardDescription>대시보드에서 통합 실행/모니터링</CardDescription>
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground">
                   여러 CSP의 GPU 서버를 단일 콘솔에서 실행하고 상태를 모니터링합니다.
-                  <div className="mt-3 flex items-center text-indigo-600 font-medium text-xs">
-                    <MousePointerClick className="w-3 h-3 mr-1"/> 클릭 <ChevronRight className="w-3 h-3 ml-1"/>
-                  </div>
                 </CardContent>
               </Card>
               {/* Preview area inside section */}
@@ -240,7 +228,7 @@ export default function LaunchPage() {
         <Card id="signup">
           <CardHeader>
             <CardTitle>서비스 요금제(월 구독)</CardTitle>
-            <CardDescription>사전 알림 신청고객에 한하여, 출시 시점에 얼리버드 혜택(월 20% 할인)을 제공합니다.</CardDescription>
+            <CardDescription>사전 알림 신청고객에 한하여, 출시 시점에 얼리버드 혜택(50% 할인)을 제공합니다.</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -321,7 +309,7 @@ export default function LaunchPage() {
               <>
                 <div className="mb-4 flex items-center gap-2 rounded-md bg-amber-50 text-amber-900 border border-amber-200 px-3 py-2">
                   <Zap className="w-4 h-4 text-amber-600"/>
-                  <span className="text-sm font-medium">알림 신청만 해도 서비스 런칭 시 비용 20% 할인 받을 수 있습니다.</span>
+                  <span className="text-sm font-medium">사전 알림 신청하면 서비스 출시 시 얼리버드 혜택(서비스 비용 50% 할인)을 받을 수 있습니다</span>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
                 <div className="md:col-span-2">
